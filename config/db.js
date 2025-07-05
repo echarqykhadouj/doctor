@@ -1,6 +1,7 @@
-const mongoose = require ('mongoose')
 
-const colors = require('colors')
+
+const mongoose = require('mongoose');
+const colors = require('colors');
 
 const connectDB = async () => {
   try {
@@ -8,10 +9,11 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline);
   } catch (error) {
-    console.error('MongoDB Server Issue:', error.message);
-    process.exit(1); // optional: stop the server if DB is down
+    console.error(`MongoDB Server Issue: ${error.message}`.red.bold);
+    process.exit(1);
   }
 };
+
 module.exports = connectDB;
